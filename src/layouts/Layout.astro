@@ -16,8 +16,10 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
+	<body class="bg-slate-500">
+		<main class="m-auto max-w-4xl bg-white shadow-xl rounded p-2 mt-2">
+			<slot />
+		</main>
 	</body>
 </html>
 <style is:global>
@@ -27,7 +29,7 @@ const { title } = Astro.props;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
+		background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 	}
 	code {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,

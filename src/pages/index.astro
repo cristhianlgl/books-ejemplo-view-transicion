@@ -1,8 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Title from '../components/Title.astro';
+import Book from '../components/Book.astro';
+
+import {books} from '../data/books.js'
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class="m-auto max-w-4xl bg-slate-600">		
-	</main>
+<Layout title="Listado de Libros">
+	<Title />
+	<ul class="grid grid-cols-2 md:grid-cols-3 gap-3">
+		{
+			books.map((book)=> 
+				<Book 
+					id={book.slug}
+					img={book.img}
+					title={book.title} 
+					url={book.slug}/>
+				)
+		}
+	</ul>		
 </Layout>
