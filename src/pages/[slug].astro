@@ -7,18 +7,27 @@ export async function getStaticPaths() {
   return books.map(({ slug, img, title, author, description }) => {
     return {
       params: { slug },
-      props: { title, img, description, author },
+      props: { slug, title, img, description, author },
     };
   });
 }
-const { title, img, description, author } = Astro.props;
+const { slug, title, img, description, author } = Astro.props;
 ---
 <Layout title="Ficha Libro">
-    <div class="grid grid-cols-[350px_1fr] gap-4">
+    
+  
+    <div class="grid grid-cols-[350px_1fr] grid-rows-[32px_1fr] gap-4">
+      <a href="/" style="grid-area: 1/1/2/3;" class="w-8 text-white bg-slate-700 hover:bg-slate-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <svg class="w-4 h-4 rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+        <span class="sr-only"> atras</span>
+      </a>
       <div class="flex flex-col gap-4">
         <picture>
           <img class="aspect-[389/500] h-full object-cover w-full rounded" 
-                src={img} alt=`Portada de ${title}`>
+                src={img} alt=`Portada de ${title}`
+                style={`view-transition-name: book-${slug}`}>
         </picture>
         <button class="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
           <span class="w-full px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">

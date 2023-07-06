@@ -10,7 +10,10 @@ const {id, title,url, img} = Astro.props;
 ---
 <li>
     <a class="hover:scale-105 hover:contrast-125 shadow-md hover:shadow-2xl inline-block transition-all" href={`${url}`}>
-        <img class="aspect-[389/500] h-full object-cover w-full rounded border-gray-600 border-2 border-solid" 
-            src={img} alt=`Portada de ${title}`>
+        <img 
+            class="aspect-[389/500] h-full object-cover w-full rounded border-gray-600 border-2 border-solid" 
+            src={img} 
+            alt=`Portada de ${title}`
+            style= {`view-transition-name: book-${id}`}>
     </a>
 </li>
